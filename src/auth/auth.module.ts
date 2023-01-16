@@ -6,6 +6,7 @@ import { IAuthService } from './services/auth.service.interface';
 import { AuthController } from './auth.controller';
 import { getJwtSecret } from './utils/jwt';
 import { LocalAuthStrategy } from './guards/local-auth.strategy';
+import { JwtAuthStrategy } from './guards/jwt-auth.strategy';
 
 const authService = { provide: IAuthService, useClass: AuthService };
 
@@ -17,6 +18,6 @@ const authService = { provide: IAuthService, useClass: AuthService };
 		})
 	],
 	controllers: [AuthController],
-	providers: [authService, LocalAuthStrategy]
+	providers: [authService, LocalAuthStrategy, JwtAuthStrategy]
 })
 export class AuthModule {}

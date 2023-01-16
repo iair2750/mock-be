@@ -3,6 +3,6 @@
     "salt": 10
   },
   "jwt": {
-    "expiredIn": 1
+    "expiredIn": 1800
   }
 }

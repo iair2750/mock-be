@@ -41,6 +41,7 @@ module.exports = {
     '@typescript-eslint/no-redeclare': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     'radix': 'off',
-    '@typescript-eslint/return-await': 'off'
+    '@typescript-eslint/return-await': 'off',
+    'no-param-reassign': 'off'
   },
 };
