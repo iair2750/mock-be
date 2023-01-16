@@ -19,19 +19,19 @@ export class UsersController {
 	constructor(@Inject(IUsersService) private readonly usersService: IUsersService) {}
 
 	@Post()
-	async create(@Body() createUserDto: CreateUserDto) {
+	async create(@Body() createUserDto: CreateUserDto): Promise<UserResponseDto> {
 		const user = await this.usersService.create(createUserDto);
 		return UserResponseDto.getFromUser(user);
 	}
 
 	@UseGuards(JwtAuthGuard)
 	@Get('me')
-	async findMe(@Request() req): Promise<any> {
+	async findMe(@Request() req): Promise<UserResponseDto> {
 		if (!req?.user?.userId) {
 			throw new UnauthorizedException();
 		}
 		const user = await this.usersService.findOne({ id: req.user.userId });
-		return user;
+		return UserResponseDto.getFromUser(user);
 	}
 
 	@Get(':id')
