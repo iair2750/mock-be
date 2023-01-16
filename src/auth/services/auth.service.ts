@@ -5,6 +5,7 @@ import { User } from 'users/entities/user.entity';
 import { UserResponseDto } from 'users/dto/user-response.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as config from 'config/config.json';
+import { JwtPayload } from 'auth/utils/types';
 import { IAuthService } from './auth.service.interface';
 
 @Injectable()
@@ -15,19 +16,19 @@ export class AuthService implements IAuthService {
 	) {}
 
 	async login(user: UserResponseDto): Promise<unknown> {
-		const token = this.jwtService.sign(
-			{
-				id: user.id,
-				createdDateTime: user.createdDateTime,
-				firstName: user.firstName,
-				lastName: user.lastName,
-				email: user.email,
-				username: user.username
-			},
-			{
-				expiresIn: config.jwt.expiredIn
-			}
-		);
+		const payload: JwtPayload = {
+			userId: user.id,
+			userCreatedDateTime: user.createdDateTime?.toString(),
+			userFirstName: user.firstName,
+			userLastName: user.lastName,
+			userEmail: user.email,
+			userUsername: user.username
+		};
+
+		const token = this.jwtService.sign(payload, {
+			expiresIn: config.jwt.expiredIn
+		});
+
 		return token;
 	}
 

@@ -9,23 +9,27 @@ export class User extends BaseEntity {
 	@CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
 	createdDateTime?: Date;
 
-	@Column({ type: 'varchar', nullable: true })
+	@Column({ type: 'varchar', nullable: true, unique: true })
 	@IsOptional()
+	@IsNotEmpty()
 	@IsString()
 	username?: string;
 
 	@Column({ type: 'varchar', nullable: true })
 	@IsOptional()
+	@IsNotEmpty()
 	@IsString()
 	firstName?: string;
 
 	@Column({ type: 'varchar', nullable: true })
 	@IsOptional()
+	@IsNotEmpty()
 	@IsString()
 	lastName?: string;
 
-	@Column({ type: 'varchar' })
+	@Column({ type: 'varchar', unique: true })
 	@IsNotEmpty()
+	@IsString()
 	@IsEmail()
 	email: string;
 

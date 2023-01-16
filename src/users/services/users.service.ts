@@ -1,4 +1,4 @@
-import { Inject, Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { IUsersRepo } from 'users/repos/users.repo.interface';
 import * as bcrypt from 'bcryptjs';
 import * as config from 'config/config.json';
@@ -11,10 +11,26 @@ export class UsersService implements IUsersService {
 	constructor(@Inject(IUsersRepo) private readonly usersRepo: IUsersRepo) {}
 
 	async create(createUserDto: CreateUserDto) {
-		const user = await this.usersRepo.findOne({ email: createUserDto.email });
-		if (user) {
-			throw new BadRequestException('This email is already in use');
+		const userByEmail = await this.usersRepo.findOne({ email: createUserDto.email });
+		const errors: Record<string, string> = {};
+		if (userByEmail) {
+			errors.email = 'This email is already in use';
 		}
+
+		if (!createUserDto.username?.length) {
+			createUserDto.username = undefined;
+		}
+		const userByUsername = createUserDto.username
+			? await this.usersRepo.findOne({ username: createUserDto.username })
+			: undefined;
+		if (createUserDto.username && userByUsername) {
+			errors.username = 'This username is already in use';
+		}
+
+		if (Object.keys(errors).length > 0) {
+			throw new BadRequestException({ errors });
+		}
+
 		const newUser = new User();
 		newUser.firstName = createUserDto.firstName;
 		newUser.lastName = createUserDto.lastName;
