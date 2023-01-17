@@ -1,4 +1,5 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Application } from 'applications/entities/application.entity';
 import * as dotenv from 'dotenv';
 import { User } from 'users/entities/user.entity';
 import { IDBConfigService } from './db-config.service.interface';
@@ -44,9 +45,9 @@ class PostgresConfigService implements IDBConfigService {
 			password,
 			database,
 
-			entities: [User],
+			entities: [User, Application],
+			// entities: ['**/*.entity{.ts,.js}'],
 			synchronize: true
-			// entities: ['**/*.entity{.ts,.js}']
 		};
 	}
 }
