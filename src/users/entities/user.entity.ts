@@ -37,4 +37,7 @@ export class User extends BaseEntity {
 	@IsNotEmpty()
 	@IsString()
 	password: string;
+
+	// @OneToMany(() => Application, app => app.owner)
+	// applications: Application[];
 }
