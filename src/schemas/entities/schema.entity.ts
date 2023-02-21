@@ -1,9 +1,20 @@
-import { BaseEntity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne } from 'typeorm';
+import {
+	BaseEntity,
+	PrimaryGeneratedColumn,
+	CreateDateColumn,
+	ManyToOne,
+	Entity,
+	Column
+} from 'typeorm';
 import { User } from 'users/entities/user.entity';
 
-export class Application extends BaseEntity {
+@Entity()
+export class Schema extends BaseEntity {
 	@PrimaryGeneratedColumn('uuid')
 	id: string;
+
+	@Column({ type: 'varchar' })
+	name: string;
 
 	@CreateDateColumn({ type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP' })
 	createdDateTime: Date;

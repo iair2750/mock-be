@@ -3,14 +3,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { postgresConfig } from 'config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-import { ApplicationsModule } from './applications/applications.module';
+import { SchemasModule } from './schemas/schemas.module';
 
 @Module({
 	imports: [
 		TypeOrmModule.forRoot(postgresConfig.getConfig()),
 		UsersModule,
 		AuthModule,
-		ApplicationsModule
+		SchemasModule
 	],
 	controllers: [],
 	providers: []
