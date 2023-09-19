@@ -10,9 +10,9 @@ const schemasService = { provide: ISchemasService, useClass: SchemasService };
 const schemasRepo = { provide: ISchemasRepo, useClass: SchemasRepo };
 
 @Module({
-	imports: [UsersModule],
-	controllers: [SchemasController],
-	providers: [schemasService, schemasRepo],
-	exports: [schemasService]
+  imports: [UsersModule],
+  controllers: [SchemasController],
+  providers: [schemasService, schemasRepo],
+  exports: [schemasService]
 })
 export class SchemasModule {}

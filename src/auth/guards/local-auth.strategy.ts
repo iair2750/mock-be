@@ -6,12 +6,12 @@ import { UserResponseDto } from 'users/dto/user-response.dto';
 
 @Injectable()
 export class LocalAuthStrategy extends PassportStrategy(Strategy) {
-	constructor(@Inject(IAuthService) private readonly authService: IAuthService) {
-		super();
-	}
+  constructor(@Inject(IAuthService) private readonly authService: IAuthService) {
+    super();
+  }
 
-	async validate(username: string, password: string): Promise<unknown> {
-		const user = await this.authService.validateUser(username, password);
-		return UserResponseDto.getFromUser(user);
-	}
+  async validate(username: string, password: string): Promise<unknown> {
+    const user = await this.authService.validateUser(username, password);
+    return UserResponseDto.getFromUser(user);
+  }
 }

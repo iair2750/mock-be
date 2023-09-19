@@ -4,7 +4,7 @@ import { ITablesRepo } from './tables.repo.interface';
 
 @Injectable()
 export class TablesRepo implements ITablesRepo {
-	async create(table: Table): Promise<Table> {
-		return table.save();
-	}
+  async create(table: Table): Promise<Table> {
+    return table.save();
+  }
 }

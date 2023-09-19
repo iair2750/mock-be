@@ -3,5 +3,5 @@ import { IColumnsService } from './services/columns.service.interface';
 
 @Controller('columns')
 export class ColumnsController {
-	constructor(@Inject(IColumnsService) private readonly columnsService: IColumnsService) {}
+  constructor(@Inject(IColumnsService) private readonly columnsService: IColumnsService) {}
 }

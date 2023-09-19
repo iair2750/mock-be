@@ -10,9 +10,9 @@ const tablesService = { provide: ITablesService, useClass: TablesService };
 const tablesRepo = { provide: ITablesRepo, useClass: TablesRepo };
 
 @Module({
-	controllers: [TablesController],
-	providers: [tablesService, tablesRepo],
-	exports: [tablesService],
-	imports: [SchemasModule]
+  controllers: [TablesController],
+  providers: [tablesService, tablesRepo],
+  exports: [tablesService],
+  imports: [SchemasModule]
 })
 export class TablesModule {}

@@ -9,8 +9,8 @@ const usersService = { provide: IUsersService, useClass: UsersService };
 const usersRepo = { provide: IUsersRepo, useClass: UsersRepo };
 
 @Module({
-	controllers: [UsersController],
-	providers: [usersService, usersRepo],
-	exports: [usersService]
+  controllers: [UsersController],
+  providers: [usersService, usersRepo],
+  exports: [usersService]
 })
 export class UsersModule {}

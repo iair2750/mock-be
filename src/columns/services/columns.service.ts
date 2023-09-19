@@ -7,13 +7,13 @@ import { IColumnsService } from './columns.service.interface';
 
 @Injectable()
 export class ColumnsService implements IColumnsService {
-	constructor(@Inject(IColumnsRepo) private readonly columnsRepo: IColumnsRepo) {}
+  constructor(@Inject(IColumnsRepo) private readonly columnsRepo: IColumnsRepo) {}
 
-	async create(table: Table, createColumnDto: CreateColumnDto): Promise<Column> {
-		const column = new Column();
-		column.name = createColumnDto.name;
-		column.table = table;
+  async create(table: Table, createColumnDto: CreateColumnDto): Promise<Column> {
+    const column = new Column();
+    column.name = createColumnDto.name;
+    column.table = table;
 
-		return this.columnsRepo.create(column);
-	}
+    return this.columnsRepo.create(column);
+  }
 }

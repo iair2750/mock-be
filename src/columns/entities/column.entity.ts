@@ -3,12 +3,12 @@ import { BaseEntity, Entity, PrimaryGeneratedColumn, Column as DBColumn, ManyToO
 
 @Entity()
 export class Column extends BaseEntity {
-	@PrimaryGeneratedColumn('uuid')
-	id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-	@DBColumn({ type: 'varchar' })
-	name: string;
+  @DBColumn({ type: 'varchar' })
+  name: string;
 
-	@ManyToOne(() => Table)
-	table: Table;
+  @ManyToOne(() => Table)
+  table: Table;
 }

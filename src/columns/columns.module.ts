@@ -9,8 +9,8 @@ const columnsService = { provide: IColumnsService, useClass: ColumnsService };
 const columnsRepo = { provide: IColumnsRepo, useClass: ColumnsRepo };
 
 @Module({
-	controllers: [ColumnsController],
-	providers: [columnsService, columnsRepo],
-	exports: [columnsService]
+  controllers: [ColumnsController],
+  providers: [columnsService, columnsRepo],
+  exports: [columnsService]
 })
 export class ColumnsModule {}

@@ -11,13 +11,13 @@ import { JwtAuthStrategy } from './guards/jwt-auth.strategy';
 const authService = { provide: IAuthService, useClass: AuthService };
 
 @Module({
-	imports: [
-		UsersModule,
-		JwtModule.register({
-			secret: getJwtSecret()
-		})
-	],
-	controllers: [AuthController],
-	providers: [authService, LocalAuthStrategy, JwtAuthStrategy]
+  imports: [
+    UsersModule,
+    JwtModule.register({
+      secret: getJwtSecret()
+    })
+  ],
+  controllers: [AuthController],
+  providers: [authService, LocalAuthStrategy, JwtAuthStrategy]
 })
 export class AuthModule {}

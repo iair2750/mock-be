@@ -8,21 +8,21 @@ import { ITablesService } from './tables.service.interface';
 
 @Injectable()
 export class TablesService implements ITablesService {
-	constructor(
-		@Inject(ITablesRepo) private readonly tablesRepo: ITablesRepo,
-		@Inject(ISchemasService) private readonly schemasRepo: ISchemasService
-	) {}
+  constructor(
+    @Inject(ITablesRepo) private readonly tablesRepo: ITablesRepo,
+    @Inject(ISchemasService) private readonly schemasRepo: ISchemasService
+  ) {}
 
-	async create(schemaId: string, createTableDto: CreateTableDto): Promise<Table> {
-		const schema = await this.schemasRepo.findOne({ id: schemaId });
-		if (!schema) {
-			throw new NotFoundException('Schema not found');
-		}
+  async create(schemaId: string, createTableDto: CreateTableDto): Promise<Table> {
+    const schema = await this.schemasRepo.findOne({ id: schemaId });
+    if (!schema) {
+      throw new NotFoundException('Schema not found');
+    }
 
-		const table = new Table();
-		table.name = createTableDto.name;
-		table.schema = schema;
+    const table = new Table();
+    table.name = createTableDto.name;
+    table.schema = schema;
 
-		return this.tablesRepo.create(table);
-	}
+    return this.tablesRepo.create(table);
+  }
 }
