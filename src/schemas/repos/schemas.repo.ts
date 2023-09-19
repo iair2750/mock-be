@@ -5,23 +5,15 @@ import { ISchemasRepo } from './schemas.repo.interface';
 
 @Injectable()
 export class SchemasRepo implements ISchemasRepo {
-	async findOne(where: FindOptionsWhere<Schema>): Promise<Schema | null> {
-<<<<<<< HEAD
-		return Schema.findOne({ where, relations: ['owner', 'tables'] });
-=======
-		return Schema.findOne({ where, relations: ['owner'] });
->>>>>>> feat/add-tables
-	}
+  async findOne(where: FindOptionsWhere<Schema>): Promise<Schema | null> {
+    return Schema.findOne({ where, relations: ['owner', 'tables'] });
+  }
 
-	async create(schema: Schema): Promise<Schema> {
-		return schema.save();
-	}
+  async create(schema: Schema): Promise<Schema> {
+    return schema.save();
+  }
 
-	async find(where: FindOptionsWhere<Schema>): Promise<Schema[]> {
-<<<<<<< HEAD
-		return Schema.find({ where, relations: ['owner', 'tables'] });
-=======
-		return Schema.find({ where, relations: ['owner'] });
->>>>>>> feat/add-tables
-	}
+  async find(where: FindOptionsWhere<Schema>): Promise<Schema[]> {
+    return Schema.find({ where, relations: ['owner', 'tables'] });
+  }
 }
