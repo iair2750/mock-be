@@ -8,15 +8,15 @@ import { TablesModule } from './tables/tables.module';
 import { ColumnsModule } from './columns/columns.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(postgresConfig.getConfig()),
-    UsersModule,
-    AuthModule,
-    SchemasModule,
-    TablesModule,
-    ColumnsModule,
-  ],
-  controllers: [],
-  providers: [],
+	imports: [
+		TypeOrmModule.forRoot(postgresConfig.getConfig()),
+		UsersModule,
+		AuthModule,
+		SchemasModule,
+		TablesModule,
+		ColumnsModule
+	],
+	controllers: [],
+	providers: []
 })
 export class AppModule {}

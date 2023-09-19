@@ -9,7 +9,12 @@ import { IAuthService } from './services/auth.service.interface';
 export class AuthController {
 	constructor(@Inject(IAuthService) private readonly authService: IAuthService) {}
 
-	@ApiBody({ schema: { title: 'Login', example: { username: 'string', password: 'string' } } })
+	@ApiBody({
+		schema: {
+			title: 'Login',
+			example: { username: 'string', password: 'string' }
+		}
+	})
 	@UseGuards(LocalAuthGuard)
 	@Post('login')
 	async login(@Request() req) {

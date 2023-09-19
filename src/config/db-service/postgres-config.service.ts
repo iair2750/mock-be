@@ -1,8 +1,13 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+<<<<<<< HEAD
 import { Column } from 'columns/entities/column.entity';
 import * as dotenv from 'dotenv';
 import { Schema } from 'schemas/entities/schema.entity';
 import { Table } from 'tables/entities/table.entity';
+=======
+import * as dotenv from 'dotenv';
+import { Schema } from 'schemas/entities/schema.entity';
+>>>>>>> feat/add-tables
 import { User } from 'users/entities/user.entity';
 import { IDBConfigService } from './db-config.service.interface';
 
@@ -47,7 +52,11 @@ class PostgresConfigService implements IDBConfigService {
 			password,
 			database,
 
+<<<<<<< HEAD
 			entities: [User, Schema, Table, Column],
+=======
+			entities: [User, Schema],
+>>>>>>> feat/add-tables
 			synchronize: true
 		};
 	}

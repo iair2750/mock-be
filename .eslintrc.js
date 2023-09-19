@@ -2,24 +2,46 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir : __dirname, 
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint', 'unused-imports', 'prettier'],
   extends: [
+    'airbnb',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'standard-with-typescript',
+    'prettier',
   ],
   root: true,
   env: {
     node: true,
     jest: true,
   },
+  settings: {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".ts"]
+      }
+    }
+  },
   ignorePatterns: ['.eslintrc.js'],
-  rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
+	rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-console': 'warn',
+    'no-return-await': 'error',
+    'unused-imports/no-unused-imports': 'error',
+    'no-use-before-define': 'error',
+    '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
+    'import/extensions': 0,
+    '@typescript-eslint/no-redeclare': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    'radix': 'off',
+    '@typescript-eslint/return-await': 'off',
+    'no-param-reassign': 'off'
   },
 };
